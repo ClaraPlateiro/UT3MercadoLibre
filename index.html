@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Electronics</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo1.png">
+</head>
+
+<body>
+    <header class="header">
+        <img src="logo2.png" alt="Logo de la página" class="logo">
+        <section class="section" id="searchBar">
+            <div class="columns">
+                <div class="column is-three-fifths">
+                    <input id="input1" class="is-four-fifths input is-normal " type="text"
+                        placeholder="Search products" />
+                </div>
+                <div class="column is-full-mobile is-one-fifth-desktop">
+                    <div class="select is-fullwidth">
+                        <select id="orderProducts">
+                            <option value="default">Default: original order of objects</option>
+                            <option value="lowPrice">Price: Lowest to Highest</option>
+                            <option value="highPrice">Price: Highest to Lowest</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="column is-full-mobile is-one-fifth-desktop">
+                    <div class="select is-fullwidth">
+                        <select id="categorySelect">
+                            <option value="todo">Mostrar todo</option>
+                            <option value="electrónica">Electrónica</option>
+                            <option value="accesorios">Accesorios</option>
+                            <option value="almacenamiento">Almacenamiento</option>
+                            <option value="audio">Audio</option>
+                            <option value="otros">Otros</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="column is-full-mobile is-one-fifth-desktop">
+                    <button class="button is-white is-fullwidth js-modal-trigger" data-target="modal-create-product">
+                        Create Product
+                    </button>
+                </div>
+            </div>
+        </section>
+    </header>
+    <div class="background"></div>
+    <section class="section" id="products">
+        <div class="container">
+            <div class="columns is-multiline" id="container1">
+            </div>
+            <div id="shopping">
+                <div class="column card-content">
+                    <h2 class="title is-4">Shopping Cart</h2>
+                    <div id="cart" class="cart">
+                        <!-- Dropped items will appear here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div id="modal-create-product" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Product creation</p>
+                <button class="delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Name:</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control">
+                                <input id="name" class="input" type="text" placeholder="Product name" />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Description:</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control">
+                                <input id="description" class="input" type="text" placeholder="Product description" />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Image:</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control">
+                                <input id="image" class="input" type="text" placeholder="Product image" />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Price:</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control">
+                                <input id="price" class="input" type="number" placeholder="Product price" />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Category:</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control">
+                            <div class="select">
+                                <select id="category">
+                                    <option value="electrónica">Electrónica</option>
+                                    <option value="accesorios">Accesorios</option>
+                                    <option value="almacenamiento">Almacenamiento</option>
+                                    <option value="audio">Audio</option>
+                                    <option value="otros">Otros</option>
+                                </select>
+                            </div>
+                            </p>
+                        </div>
+                    </div>
+            </section>
+            <footer class="modal-card-foot">
+                <div class="buttons">
+                    <button id="save" class="button is-success">Save changes</button>
+                    <button class="button button is-white">Cancel</button>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <div id="modal-js-example" class="modal">
+        <div class="modal-background"></div>
+        <div id="1" class="card column is-full-mobile is-one-quarter-desktop">
+            <div class="card-image">
+                <figure class="image is-4by3">
+                    <img id="modalImage" src="https://via.placeholder.com/150?text=Mechanical+Keyboard"
+                        alt="Placeholder image">
+                </figure>
+            </div>
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-content">
+                        <p id="ModalTitle" class="title is-4">Mechanical Keyboard</p>
+                    </div>
+                </div>
+                <div id="ModalDescription" class="content">
+                    RGB backlit mechanical keyboard with Cherry MX switches. 89.99
+                </div>
+            </div>
+            <footer class="modal-card-foot">
+                <div class="buttons">
+                    <button id="delete-button" class="button is-warning">Delete</button>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <section id="noProducts"
+        class="section is-flex-direction-column is-justify-content-center is-align-items-center is-fullheight hidden">
+        <h1 class="title">No se encontraron resultados.</h1>
+    </section>
+
+    <script src="mercado.js"></script>
+</body>
+
+</html>
