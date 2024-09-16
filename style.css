@@ -87,12 +87,12 @@
 
 .modal-card-body,
 .modal-card-foot {
-    background-color: #454172;
-    color: #333;
+    background-color: #4e4e4fdb;
+    color: #4e4e4fdb;;
 }
 
 .modal-card-head {
-    background-color: #343840d2;
+    background-color: #4e4e4fdb;
     max-height: 200px;
 }
 

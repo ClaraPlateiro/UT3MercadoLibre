@@ -150,6 +150,91 @@
         </div>
     </div>
 
+    <div id="modal-edit-product" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Edit Product</p>
+                <button class="delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Name:</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control">
+                                <input id="edit-name" class="input" type="text" placeholder="Product name" />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Description:</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control">
+                                <input id="edit-description" class="input" type="text" placeholder="Product description" />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Image:</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control">
+                                <input id="edit-image" class="input" type="text" placeholder="Product image" />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Price:</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control">
+                                <input id="edit-price" class="input" type="number" placeholder="Product price" />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Category:</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control">
+                            <div class="select">
+                                <select id="edit-category">
+                                    <option value="electrónica">Electrónica</option>
+                                    <option value="accesorios">Accesorios</option>
+                                    <option value="almacenamiento">Almacenamiento</option>
+                                    <option value="audio">Audio</option>
+                                    <option value="otros">Otros</option>
+                                </select>
+                            </div>
+                            </p>
+                        </div>
+                    </div>
+            </section>
+            <footer class="modal-card-foot">
+                <div class="buttons">
+                    <button id="update-product" class="button is-success">Update Product</button>
+                    <button class="button is-white">Cancel</button>
+                </div>
+            </footer>
+        </div>
+    </div>
+
     <div id="modal-js-example" class="modal">
         <div class="modal-background"></div>
         <div id="1" class="card column is-full-mobile is-one-quarter-desktop">
@@ -172,6 +257,7 @@
             <footer class="modal-card-foot">
                 <div class="buttons">
                     <button id="delete-button" class="button is-warning">Delete</button>
+                    <button id="edit-button" class="button is-warning">Edit</button>
                 </div>
             </footer>
         </div>

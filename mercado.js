@@ -81,6 +81,8 @@ let htmlGenerator = (arrayItems) => {
 }
 
 
+
+
 // MODAL FUNCTIONS
 function openModal($el) {
     $el.classList.add('is-active');
@@ -203,6 +205,21 @@ const createProduct = () => {
     closeModal(document.getElementById("modal-create-product"));
 }
 
+/*const modalBody = (productId) => {
+    console.log(productId);
+    const item = itemsList.find(item => item.id == parseInt(productId));
+    console.log(item);
+    const modalTitle = document.getElementById("ModalTitle");
+    const modalDescription = document.getElementById("ModalDescription");
+    const modalImage = document.getElementById("modalImage");
+    document.getElementById("modal-create-product")["data-product-id"] = item.id;
+
+    modalTitle.innerHTML = item.name;
+    modalDescription.innerHTML = item.description + " " + item.price;
+    modalImage.src = item.image;
+    document.getElementById("modal-js-example").classList.add('is-active');
+}*/
+
 const modalBody = (productId) => {
     console.log(productId);
     const item = itemsList.find(item => item.id == parseInt(productId));
@@ -216,7 +233,8 @@ const modalBody = (productId) => {
     modalDescription.innerHTML = item.description + " " + item.price;
     modalImage.src = item.image;
     document.getElementById("modal-js-example").classList.add('is-active');
-}
+    document.getElementById('edit-button').addEventListener('click', () => openEditModal(item));
+};
 
 const orderProducts = document.getElementById("orderProducts");
 const inputText = document.getElementById("input1");
@@ -307,3 +325,54 @@ const deleteTask = async (idProdcut) => {
         console.log(error)
     }
 }
+
+const openEditModal = (product) => {
+    document.getElementById('edit-name').value = product.name;
+    document.getElementById('edit-description').value = product.description;
+    document.getElementById('edit-image').value = product.image;
+    document.getElementById('edit-price').value = product.price;
+    document.getElementById('edit-category').value = product.category;
+    document.getElementById('modal-edit-product').dataset.productId = product.id;
+    openModal(document.getElementById('modal-edit-product'));
+};
+
+//No logré que funcionara el update
+const updateProduct = async () => {
+    const id = document.getElementById('modal-edit-product').dataset.productId;
+    const name = document.getElementById('edit-name').value;
+    const description = document.getElementById('edit-description').value;
+    const image = document.getElementById('edit-image').value;
+    const price = document.getElementById('edit-price').value;
+    const category = document.getElementById('edit-category').value;
+
+    const updatedProduct = {
+        name,
+        description,
+        image,
+        price,
+        category
+    };
+
+    try {
+        const response = await fetch(`http://localhost:3000/api/tasks/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updatedProduct),
+        });
+
+        if (response.ok) {
+            const updated = await response.json();
+            itemsList = itemsList.map(item => item.id === id ? updated : item);
+            htmlGenerator(itemsList);
+            closeModal(document.getElementById('modal-edit-product'));
+        } else {
+            console.error('Failed to update product');
+        }
+    } catch (error) {
+        console.error('Error updating product:', error);
+    }
+};
+
+document.getElementById('update-product').addEventListener('click', updateProduct);
