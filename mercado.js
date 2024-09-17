@@ -205,21 +205,6 @@ const createProduct = () => {
     closeModal(document.getElementById("modal-create-product"));
 }
 
-/*const modalBody = (productId) => {
-    console.log(productId);
-    const item = itemsList.find(item => item.id == parseInt(productId));
-    console.log(item);
-    const modalTitle = document.getElementById("ModalTitle");
-    const modalDescription = document.getElementById("ModalDescription");
-    const modalImage = document.getElementById("modalImage");
-    document.getElementById("modal-create-product")["data-product-id"] = item.id;
-
-    modalTitle.innerHTML = item.name;
-    modalDescription.innerHTML = item.description + " " + item.price;
-    modalImage.src = item.image;
-    document.getElementById("modal-js-example").classList.add('is-active');
-}*/
-
 const modalBody = (productId) => {
     console.log(productId);
     const item = itemsList.find(item => item.id == parseInt(productId));
@@ -276,7 +261,7 @@ function filterProductsByCategory(category) {
 
 const getTasks = async () => {
     try {
-        const response = await fetch("http://localhost:3000/api/tasks");
+        const response = await fetch("http://localhost:3000/api/products");
         if (response.ok) {
             const jsonResponse = await response.json();
             itemsList = jsonResponse;
@@ -291,7 +276,7 @@ getTasks();
 
 const addTask = async (producto) => {
     try {
-        const response = await fetch("http://localhost:3000/api/tasks", {
+        const response = await fetch("http://localhost:3000/api/products", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -311,7 +296,7 @@ const addTask = async (producto) => {
 
 const deleteTask = async (idProdcut) => {
     try {
-        const response = await fetch(`http://localhost:3000/api/tasks/${idProdcut}`, {
+        const response = await fetch(`http://localhost:3000/api/products/${idProdcut}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -336,7 +321,6 @@ const openEditModal = (product) => {
     openModal(document.getElementById('modal-edit-product'));
 };
 
-//No logré que funcionara el update
 const updateProduct = async () => {
     const id = document.getElementById('modal-edit-product').dataset.productId;
     const name = document.getElementById('edit-name').value;
@@ -354,7 +338,7 @@ const updateProduct = async () => {
     };
 
     try {
-        const response = await fetch(`http://localhost:3000/api/tasks/${id}`, {
+        const response = await fetch(`http://localhost:3000/api/products/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
